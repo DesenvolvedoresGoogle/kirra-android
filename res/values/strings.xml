@@ -3,5 +3,7 @@
 
     <string name="app_name">kirra-android-gdg</string>
     <string name="title_entity_detail">Entity Detail</string>
+    <string name="title_activity_instance_detail">InstanceDetailActivity</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>

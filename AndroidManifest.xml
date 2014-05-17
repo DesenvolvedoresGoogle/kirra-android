@@ -7,8 +7,8 @@
     <uses-sdk
         android:minSdkVersion="19"
         android:targetSdkVersion="19" />
-    
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -31,6 +31,10 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.kirra_android_gdg.EntityListActivity" />
+        </activity>
+        <activity
+            android:name="com.example.kirra_android_gdg.InstanceDetailActivity"
+            android:label="@string/title_activity_instance_detail" >
         </activity>
     </application>
 

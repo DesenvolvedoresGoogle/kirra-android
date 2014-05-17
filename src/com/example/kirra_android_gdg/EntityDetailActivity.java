@@ -2,6 +2,9 @@ package com.example.kirra_android_gdg;
 
 import java.io.Serializable;
 
+import com.abstratt.kirra.Instance;
+import com.example.kirra_android_gdg.EntityDetailFragment.Callbacks;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -17,7 +20,7 @@ import android.widget.ListView;
  * This activity is mostly just a 'shell' activity containing nothing more than
  * a {@link EntityDetailFragment}.
  */
-public class EntityDetailActivity extends FragmentActivity {
+public class EntityDetailActivity extends FragmentActivity implements Callbacks {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -47,5 +50,14 @@ public class EntityDetailActivity extends FragmentActivity {
 			getSupportFragmentManager().beginTransaction().add(R.id.entity_detail_container, fragment).commit();
 			
 		}
+	}
+	
+	@Override
+	public void onItemSelected(Instance instance) {
+		// In single-pane mode, simply start the detail activity
+		// for the selected item ID.
+		Intent detailIntent = new Intent(this, InstanceDetailActivity.class);
+		detailIntent.putExtra(InstanceDetailActivity.ARG_INSTANCE_DATA, instance);
+		startActivity(detailIntent);
 	}
 }
