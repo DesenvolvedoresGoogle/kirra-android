@@ -8,6 +8,7 @@ import org.apache.commons.lang3.text.WordUtils;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -46,6 +47,7 @@ public class InstanceDetailActivity extends Activity {
 		Integer lastId = null;
 		for (Entry<String, Object> entry : values) {
 			TextView fieldName = new TextView(this);
+			fieldName.setTextSize(16);
 			fieldName.setText(StringUtils.join(StringUtils.splitByCharacterTypeCamelCase(StringUtils.capitalize(entry.getKey())), " ") + ":");
 			LayoutParams labelParams = new LayoutParams(
 					RelativeLayout.LayoutParams.WRAP_CONTENT,
@@ -57,6 +59,8 @@ public class InstanceDetailActivity extends Activity {
 			fieldName.setId(lastId);
 
 			TextView value = new TextView(this);
+			value.setTypeface(value.getTypeface(), Typeface.BOLD);
+			value.setTextSize(16);
 			value.setText(entry.getValue() == null ? "" : entry.getValue().toString());
 			LayoutParams valueParams = new LayoutParams(
 					RelativeLayout.LayoutParams.WRAP_CONTENT,
