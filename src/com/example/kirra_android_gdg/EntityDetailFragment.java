@@ -55,9 +55,9 @@ public class EntityDetailFragment extends ListFragment {
 	private Entity entity;
 
 	
-	private Callbacks mCallbacks;
+	private InstanceSelectedCallback mCallbacks;
 
-	private Callbacks  sDummyCallbacks = new Callbacks() {
+	private InstanceSelectedCallback  sDummyCallbacks = new InstanceSelectedCallback() {
 		
 		@Override
 		public void onItemSelected(Instance id) {
@@ -71,7 +71,7 @@ public class EntityDetailFragment extends ListFragment {
 	 * implement. This mechanism allows activities to be notified of item
 	 * selections.
 	 */
-	public interface Callbacks {
+	public interface InstanceSelectedCallback {
 		/**
 		 * Callback for when an item has been selected.
 		 */
@@ -159,12 +159,11 @@ public class EntityDetailFragment extends ListFragment {
 		super.onAttach(activity);
 
 		// Activities containing this fragment must implement its callbacks.
-		if (!(activity instanceof Callbacks)) {
-			throw new IllegalStateException(
-					"Activity must implement fragment's callbacks.");
+		if (!(activity instanceof InstanceSelectedCallback)) {
+			throw new IllegalStateException("Unexpected kind of activity: " + activity);
 		}
 
-		mCallbacks = (Callbacks) activity;
+		mCallbacks = (InstanceSelectedCallback) activity;
 	}
 
 	@Override

@@ -21,7 +21,7 @@ import com.abstratt.kirra.rest.client.SchemaManagementOnREST;
  * selection. This helps indicate which item is currently being viewed in a
  * {@link EntityDetailFragment}.
  * <p>
- * Activities containing this fragment MUST implement the {@link Callbacks}
+ * Activities containing this fragment MUST implement the {@link EntitySelectedCallback}
  * interface.
  */
 public class EntityListFragment extends ListFragment {
@@ -44,9 +44,9 @@ public class EntityListFragment extends ListFragment {
 
 	private List<Entity> entities;
 	
-	private Callbacks mCallbacks;
+	private EntitySelectedCallback mCallbacks;
 
-	private Callbacks  sDummyCallbacks = new Callbacks() {
+	private EntitySelectedCallback  sDummyCallbacks = new EntitySelectedCallback() {
 		
 		@Override
 		public void onItemSelected(Entity id) {
@@ -60,7 +60,7 @@ public class EntityListFragment extends ListFragment {
 	 * implement. This mechanism allows activities to be notified of item
 	 * selections.
 	 */
-	public interface Callbacks {
+	public interface EntitySelectedCallback {
 		/**
 		 * Callback for when an item has been selected.
 		 */
@@ -117,12 +117,12 @@ public class EntityListFragment extends ListFragment {
 		super.onAttach(activity);
 
 		// Activities containing this fragment must implement its callbacks.
-		if (!(activity instanceof Callbacks)) {
+		if (!(activity instanceof EntitySelectedCallback)) {
 			throw new IllegalStateException(
 					"Activity must implement fragment's callbacks.");
 		}
 
-		mCallbacks = (Callbacks) activity;
+		mCallbacks = (EntitySelectedCallback) activity;
 	}
 
 	@Override
