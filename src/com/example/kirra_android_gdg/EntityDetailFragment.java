@@ -8,21 +8,14 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.abstratt.kirra.Entity;
 import com.abstratt.kirra.Instance;
-import com.abstratt.kirra.Property;
 import com.abstratt.kirra.rest.client.InstanceManagementOnREST;
-import com.abstratt.kirra.rest.client.SchemaManagementOnREST;
-import com.example.kirra_android_gdg.EntityListFragment.Callbacks;
 
 /**
  * A fragment representing a single Entity detail screen. This fragment is
@@ -56,9 +49,6 @@ public class EntityDetailFragment extends ListFragment {
 	public static final String ARG_ITEM_ID = "item_id";
 
 	private List<Instance> instances;
-	private List<InstanceData> instanceInfo;
-
-	private Instance selectedInstance;
 	/**
 	 * The dummy content this fragment is presenting.
 	 */
