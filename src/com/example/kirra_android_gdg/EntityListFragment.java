@@ -1,6 +1,7 @@
 package com.example.kirra_android_gdg;
 
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
@@ -87,12 +88,14 @@ public class EntityListFragment extends ListFragment {
         	
         	@Override
         	protected void onPostExecute(List<Entity> result) {
-		// TODO: replace with a real list adapter.
-                setListAdapter(new ArrayAdapter<Entity>(
+        		List<String> entityNames = new ArrayList<String>();
+        		for (Entity entity : result)
+        			entityNames.add(entity.getLabel());
+                setListAdapter(new ArrayAdapter<String>(
                         getActivity(),
 				android.R.layout.simple_list_item_activated_1,
                         android.R.id.text1,
-                        entities));
+                        entityNames));
         	}
         }.execute();
 	}
